@@ -36,6 +36,11 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v4
+      - name: Set Nx Cloud Token
+        env:
+          NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_RW_TOKEN }}
+        run: echo "Using read-write token"
+
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: pnpm exec nx-cloud record -- echo Hello World
